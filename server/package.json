@@ -12,6 +12,10 @@
     "morgan": "^1.10.0",
     "validator": "^13.9.0"
   },
+  "scripts": {
+    "dev": "nodemon index.js",
+    "build": "npm i"
+  },
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
