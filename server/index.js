@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
-import User from './models/User'
+const User = require('./models/User');
 
 
 dotenv.config();
