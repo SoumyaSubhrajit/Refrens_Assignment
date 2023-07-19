@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 
 // register API endpoint..
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
   const { username, password, email } = req.body
 
   try {
@@ -40,10 +40,50 @@ app.post('/register', (req, res) => {
       verificationToken
     })
 
+    // Hash the password before saving the user.
+    const salt = await bcrypt.genSalt(10);
+    const hasedPassword = await bcrypt.hash(password, salt);
+    newUser.password = hasedPassword;
+
+    // Save the user to the database.
+    await newUser.save();
+
+    // Save a verification email.
+    sendVerificationEmail(email, verificationToken);
+
+    res.json({ message: 'User registred suucessfully' });
+  } catch (error) {
+    console.error(error);
+    res.status | (500).json({ error: 'Internal server error' });
   }
 })
 
+// Verify email API endpoint
+app.get('/verify-email', async (req, res) => {
+  const { token } = req.query;
 
+  try {
+    // Verify the token
+    const { email } = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Find the user with the given email
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Mark the user as verified
+    user.isVerified = true;
+    user.verificationToken = undefined;
+    await user.save();
+
+    res.json({ message: 'Email verified successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 
 /* MONGOOSE SETUP */
