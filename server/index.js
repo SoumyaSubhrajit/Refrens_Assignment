@@ -87,6 +87,48 @@ app.get('/verify-email', async (req, res) => {
 });
 
 
+
+
+// lOGIN API endpoint.
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    // Find the user in the database
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(401).json({
+        error: "Invalid username or password"
+      })
+    }
+
+    // Compare the password with the hashed password.
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      res.status(401).json({
+        error: "Invalid username ot password"
+      })
+    }
+    // Generate a JWT token
+    const token = jwt.sign({ usernmae: user.username }, process.env.JWT_SECRET, {
+      expiresIn: process.env.TOKEN_EXPIRATION_TIME || "20d",
+    })
+
+    res.json({ token })
+    res.status(201).json({
+      status: "success",
+      message: "Login successful"
+    })
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Internal server error."
+    })
+  }
+})
+
+
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 4001;
 

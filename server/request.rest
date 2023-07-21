@@ -2,11 +2,21 @@ GET https://github.com/SoumyaSubhrajit
 
 ###
 
-POST http://localhost:3000/register
+# POST http://localhost:3000/register
+# Content-Type: application/json
+
+# {
+#   "username": "abhijit",
+#   "password": "abhio456",
+#   "email": "abhi1234@gmail.com"
+# }
+
+###
+
+POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "username": "abhijit",
-  "password": "abhio456",
-  "email": "abhi1234@gmail.com"
+  "username": "Soumya Subhrajit Bag",
+  "password": "kanha456"
 }
