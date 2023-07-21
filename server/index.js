@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const User = require('./models/User');
+const jwt = require('jsonwebtoken');
 
 
 dotenv.config();
@@ -49,7 +50,7 @@ app.post('/register', async (req, res) => {
     await newUser.save();
 
     // Save a verification email.
-    sendVerificationEmail(email, verificationToken);
+    // sendVerificationEmail(email, verificationToken);
 
     res.json({ message: 'User registred suucessfully' });
   } catch (error) {

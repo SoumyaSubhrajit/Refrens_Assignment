@@ -1,20 +1,13 @@
-Below is the step-by-step process for the given API assignment:
-
-Step 1: Set up the Node.js project
-
-Create a new Node.js project.
-Initialize a package.json file to manage dependencies.
-Step 2: Install required dependencies
-
-Install the necessary dependencies for the project, such as Express, MongoDB/Mongoose, and any other libraries or packages required.
-Step 3: Design and implement the Login API
+// ======== Doing ===========// 
 
 Create an API endpoint for user login.
 Validate the user's credentials (e.g., username and password) against the database.
 Use appropriate hashing and encryption techniques to securely store and compare passwords.
 Generate and return a JWT (JSON Web Token) upon successful authentication.
-Step 4: Design and implement the Tambula ticket creation API
 
+
+=======================================================================
+Step 4: Design and implement the Tambula ticket creation API
 Create an API endpoint for creating Tambula tickets.
 Accept the number of tickets as a variable parameter.
 Generate unique tickets using the given rules and sample ticket array.
