@@ -67,7 +67,7 @@ app.get('/verify-email', async (req, res) => {
     const { email } = jwt.verify(token, process.env.JWT_SECRET);
 
     // Find the user with the given email
-    const user = await User.findOne({ email });
+    const user = await User.find({ email });
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
