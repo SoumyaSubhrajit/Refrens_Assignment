@@ -1,17 +1,12 @@
 // ======== Doing ===========// 
 
-Create an API endpoint for user login.
-Validate the user's credentials (e.g., username and password) against the database.
-Use appropriate hashing and encryption techniques to securely store and compare passwords.
-Generate and return a JWT (JSON Web Token) upon successful authentication.
-
-
-=======================================================================
 Step 4: Design and implement the Tambula ticket creation API
 Create an API endpoint for creating Tambula tickets.
 Accept the number of tickets as a variable parameter.
 Generate unique tickets using the given rules and sample ticket array.
 Store the generated tickets in the database.
+=======================================================================
+
 Return a unique ID for each ticket created.
 Step 5: Design and implement the Tambula ticket fetch API
 

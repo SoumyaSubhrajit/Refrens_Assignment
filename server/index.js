@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const User = require('./models/User');
 const jwt = require('jsonwebtoken');
+const Ticket = require('./models/TambulaTicket');
+const sampleTicket = require('./sampleTickets.json')
 
 
 dotenv.config();
@@ -128,6 +130,16 @@ app.post('/login', async (req, res) => {
   }
 })
 
+
+// Helper function to generate random unique number for the ticket
+function generateRandomUniqueNumber(usedNumbers) {
+  const randomNum = Math.floor(Math.random() * 60) + 1
+  if (!usedNumbers.has(randomNum)) {
+    usedNumbers.add(randomNum);
+    return randomNum;
+  }
+  return generateRandomUniqueNumber(usedNumbers);
+}
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 4001;
