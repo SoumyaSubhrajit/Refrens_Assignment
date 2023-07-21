@@ -1,24 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-const helmet = require('helmet');
-const morgan = require('morgan');
-const dotenv = require('dotenv');
-const User = require('./models/User');
 const jwt = require('jsonwebtoken');
-const Ticket = require('./models/TambulaTicket');
-const sampleTicket = require('./sampleTickets.json')
+const User = require('../models/User');
 
-
-dotenv.config();
-const app = express();
-
-app.use(bodyParser.json());
-
-
-// register API endpoint..
-app.post('/register', async (req, res) => {
+const register = async (req, res) => {
   const { username, password, email } = req.body
 
   try {
@@ -59,10 +43,9 @@ app.post('/register', async (req, res) => {
     console.error(error);
     res.status | (500).json({ error: 'Internal server error' });
   }
-})
+}
 
-// Verify email API endpoint
-app.get('/verify-email', async (req, res) => {
+const verifyEmail = async (req, res) => {
   const { token } = req.query;
 
   try {
@@ -86,13 +69,9 @@ app.get('/verify-email', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
-});
+};
 
-
-
-
-// lOGIN API endpoint.
-app.post('/login', async (req, res) => {
+const login = async (req, res) => {
   const { username, password } = req.body;
   try {
     // Find the user in the database
@@ -128,18 +107,10 @@ app.post('/login', async (req, res) => {
       error: "Internal server error."
     })
   }
-})
+};
 
-
-
-/* MONGOOSE SETUP */
-const PORT = process.env.PORT || 4001;
-
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
-  })
-  .catch((error) => console.log(`${error} didn't connect`));
+module.exports = {
+  register,
+  verifyEmail,
+  login
+};
