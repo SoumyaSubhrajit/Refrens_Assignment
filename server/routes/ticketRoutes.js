@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
-const userController = require('../controllers/ticketController');
+const ticketController = require('../controllers/ticketController');
 
+router.post('/createtickets', ticketController.createTickets)
 
 module.exports = router;

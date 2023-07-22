@@ -7,6 +7,6 @@ const tambulaTicketSchema = new mongoose.Schema({
   ],
 });
 
-const sampleTicket = mongoose.model('sampleTicket', tambulaTicketSchema)
+const TambulaTicket = mongoose.model('TambulaTicket ', tambulaTicketSchema)
 
-module.exports = sampleTicket;
+module.exports = TambulaTicket;

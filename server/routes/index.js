@@ -4,7 +4,6 @@ const authRoutes = require('./authroutes')
 
 const tickets = require('./ticketRoutes');
 
-
 router.use('/auth', authRoutes);
 router.use('/tickets', tickets);
 
