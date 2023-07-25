@@ -36,7 +36,35 @@ const createTickets = async (req, res) => {
   }
 }
 
-module.exports = createTickets;
+// Fetch Tambula tickets API endpoint with pagination
+const fetchtickets = async (req, res) => {
+  const { id } = req.params;
+  const page = req.query.page || 1;
+  const pageSize = req.query.pageSize || 10;
 
-// addigng here something
-// Adding something here.
+  try {
+    const totalTickets = await TambulaTicket.countDocuments({}); // Get total number of tickets
+
+    // Calculate the number of tickets to skip based on the page and pageSize
+    const skipCount = (page - 1) * pageSize;
+
+    // Fetch tickets associated with the respective ID with pagination
+    const tickets = await TambulaTicket.find({})
+      .skip(skipCount)
+      .limit(pageSize)
+      .exec();
+
+    res.json({
+      page,
+      pageSize,
+      totalTickets,
+      tickets,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+module.exports = { fetchtickets, createTickets };
+
+
