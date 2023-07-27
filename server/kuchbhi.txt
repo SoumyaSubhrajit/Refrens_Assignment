@@ -1,0 +1,18 @@
+Dear Hiring Manager,
+
+I hope this message finds you well. I am Soumya Subhrajit Bag, a highly motivated engineering graduate with a strong passion for Full Stack Web development. I have honed my expertise in utilizing a diverse set of tools, including Java, JavaScript, ReactJs, NodeJs, ExpressJs, NextJs, MySql, MongoDB, and Servlet, to craft exceptional web applications.
+
+What particularly interests me about working for AutoVRse is the company's renowned reputation for innovation and excellence in the tech industry. I have been following AutoVRse's work closely, and I am impressed by the cutting-edge projects your team has been delivering. The opportunity to collaborate with such talented professionals in an environment that fosters creativity and growth truly excites me.
+
+Furthermore, I deeply resonate with AutoVRse's mission and vision, as it aligns with my own values and aspirations. I am eager to contribute my skills and knowledge to drive the company's mission forward and be a part of the dynamic and forward-thinking culture that I believe sets AutoVRse apart from its peers.
+
+I am writing to inquire about any suitable positions that may currently be available within your company. If there are any opportunities that align with my skills and experience, I would be grateful for the chance to submit my application. Thank you for considering my message, and I eagerly look forward to the possibility of joining the AutoVRse team.
+
+Best regards,
+Soumya Subhrajit Bag.
+
+// Adding something herer.
+
+
+
+
